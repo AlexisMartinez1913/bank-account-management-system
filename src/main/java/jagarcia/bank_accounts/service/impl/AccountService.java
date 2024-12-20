@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class AccountService implements IAccountService {
 
-    @Autowired
+    @Autowired(required = false)
     private AccountRepository accountRepository;
     @Override
     public List<Account> getAllAccounts() {
