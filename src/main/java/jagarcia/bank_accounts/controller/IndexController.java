@@ -20,6 +20,7 @@ public class IndexController {
     AccountService accountService;
 
     private List<Account> accounts;
+
     //mandar info a la consola
     private  static final Logger logger =
             LoggerFactory.getLogger(IndexController.class);
