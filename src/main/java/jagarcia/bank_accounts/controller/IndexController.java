@@ -20,6 +20,8 @@ public class IndexController {
     AccountService accountService;
 
     private List<Account> accounts;
+    //atributo para cargar cuenta especifica
+    private Account selectedAccount;
 
     //mandar info a la consola
     private  static final Logger logger =
@@ -33,6 +35,11 @@ public class IndexController {
     public void loadData() {
         this.accounts = accountService.getAllAccounts();
         accounts.forEach((account -> logger.info(account.toString())));
+    }
+
+    public void addAccount() {
+        this.selectedAccount = new Account();
+
     }
 
 
