@@ -8,8 +8,17 @@
 </h:head>
 <h:body>
     <div class="card">
-        <div class="card">
-            <p:dataTable value="#{indexController.accounts}" var="account">
+        <h:form id="form-accounts">
+            <p:growl id="messages" showDetail="true" />
+            <div class="card">
+                <p:menubar>
+                    <p:menuitem value="Home" icon="pi pi-fw pi-user"
+                                update=".form-accounts:table-accounts"
+                                actionListener="#{indexController.loadData}" />
+                </p:menubar>
+            </div>
+           <div class="card">
+            <p:dataTable value="#{indexController.accounts}" var="account" id="table-accounts" widgetVar="accountsTable">
                 <f:facet name="header">
                     <div class="flex justify-content-center flex-wrap card-container yellow-container">
                         <div class="flex align-items-center justify-content-center w-20rem h-4rem bg-yellow-500 font-bold text-gray-900 border-round m-2">
@@ -39,6 +48,7 @@
 
             </p:dataTable>
         </div>
+        </h:form>
     </div>
 </h:body>
 </html>
