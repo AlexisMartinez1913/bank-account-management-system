@@ -53,6 +53,11 @@ public class IndexController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Account Added!"));
         }
+        else { //modificar
+            this.accountService.saveAccount(this.selectedAccount);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Updated Account!"));
+        }
         //ocultar vendana
         PrimeFaces.current().executeScript("PF('windowModalAccount').hide()");
         //actualizar tabla
