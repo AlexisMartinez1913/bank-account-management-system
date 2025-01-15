@@ -46,6 +46,7 @@ public class IndexController {
     }
 
     public void saveAccount() {
+        //agregar
         logger.info("Account to save:" + this.selectedAccount);
         if (this.selectedAccount.getIdAccount() == null) {
             this.accountService.saveAccount(this.selectedAccount);
@@ -61,6 +62,21 @@ public class IndexController {
         //ocultar vendana
         PrimeFaces.current().executeScript("PF('windowModalAccount').hide()");
         //actualizar tabla
+        PrimeFaces.current().ajax().update("form-accounts:messages",
+                "form-accounts:table-accounts");
+        //reset
+        this.selectedAccount = null;
+    }
+
+    public void deleteAccount() {
+        logger.info("Account to delete: " + this.selectedAccount);
+        this.accountService.deleteAccount(selectedAccount);
+        //eliminar el registro de la lista de cuentas
+        this.accounts.remove(this.selectedAccount);
+        //reset del objeto seleccionado de la tabla
+        this.selectedAccount = null;
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Account deleted!"));
         PrimeFaces.current().ajax().update("form-accounts:messages",
                 "form-accounts:table-accounts");
     }
